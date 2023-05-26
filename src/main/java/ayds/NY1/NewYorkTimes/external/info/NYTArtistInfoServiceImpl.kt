@@ -1,7 +1,7 @@
-package ayds.newyork.songinfo.moredetails.data.external.info
+package ayds.NY1.NewYorkTimes.external.info
 
-import ayds.newyork.songinfo.moredetails.data.external.NYTArtistInfoService
-import ayds.newyork.songinfo.moredetails.domain.ArtistInformation
+import ayds.NY1.NewYorkTimes.external.info.NYTArtistInfoService
+import ayds.NY1.NewYorkTimes.external.entity.ArtistInformationExternal
 import retrofit2.Response
 
 class NYTArtistInfoServiceImpl(
@@ -9,7 +9,7 @@ class NYTArtistInfoServiceImpl(
     private val newYorkTimesAPI : NYTimesAPI
 ) : NYTArtistInfoService {
 
-    override fun getArtistInfo(name: String): ArtistInformation? {
+    override fun getArtistInfo(name: String): ArtistInformationExternal? {
         val callResponse = getArtistInfoFromService(name)
         return NYTtoArtistInfo.getArtistInfoFromExternalData(name, callResponse.body())
     }

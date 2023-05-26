@@ -1,11 +1,11 @@
-package ayds.newyork.songinfo.moredetails.data.external.info
+package ayds.NY1.NewYorkTimes.external.info
 
-import ayds.newyork.songinfo.moredetails.domain.ArtistInformation
+import ayds.NY1.NewYorkTimes.external.entity.ArtistInformationExternal
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
 interface NYTtoArtistInfoResolver {
-    fun getArtistInfoFromExternalData(name: String, serviceData: String?): ArtistInformation?
+    fun getArtistInfoFromExternalData(name: String, serviceData: String?): ArtistInformationExternal?
 }
 
 internal class JsonToArtistInfoResolver : NYTtoArtistInfoResolver {
@@ -13,14 +13,14 @@ internal class JsonToArtistInfoResolver : NYTtoArtistInfoResolver {
     override fun getArtistInfoFromExternalData(
         name: String,
         serviceData: String?
-    ): ArtistInformation? {
+    ): ArtistInformationExternal? {
         return serviceData.getFirstItem()?.let { item ->
-            ArtistInformation.ArtistInformationData(
+            ArtistInformationExternal.ArtistInformationDataExternal(
                 name,
                 item.getAbstract(),
                 item.getURL()
             )
-        } ?: ArtistInformation.ArtistInformationEmpty
+        } ?: ArtistInformationExternal.ArtistInformationEmptyExternal
     }
 
     private fun String?.getFirstItem(): JsonObject? {

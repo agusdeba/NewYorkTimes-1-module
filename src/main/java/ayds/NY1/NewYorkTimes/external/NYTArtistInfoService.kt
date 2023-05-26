@@ -1,8 +1,8 @@
-package ayds.newyork.songinfo.moredetails.data.external
+package ayds.NY1.NewYorkTimes.external
 
-import ayds.newyork.songinfo.moredetails.domain.ArtistInformation
+import ayds.NY1.NewYorkTimes.external.entity.ArtistInformationExternal
 
 interface NYTArtistInfoService {
 
-    fun getArtistInfo(name: String): ArtistInformation?
+    fun getArtistInfo(name: String): ArtistInformationExternal?
 }

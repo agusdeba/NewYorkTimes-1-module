@@ -1,4 +1,4 @@
-package ayds.newyork.songinfo.moredetails.data.external.info
+package ayds.NY1.NewYorkTimes.external.info
 
 const val DOCS = "docs"
 const val ABSTRACT = "abstract"

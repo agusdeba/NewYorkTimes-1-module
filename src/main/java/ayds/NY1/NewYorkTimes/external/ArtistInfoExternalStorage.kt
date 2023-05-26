@@ -1,16 +1,16 @@
-package ayds.newyork.songinfo.moredetails.data.external
+package ayds.NY1.NewYorkTimes.external
 
-import ayds.newyork.songinfo.moredetails.data.external.info.NYTArtistInfoServiceImpl
-import ayds.newyork.songinfo.moredetails.domain.ArtistInformation
+import ayds.NY1.NewYorkTimes.external.info.NYTArtistInfoServiceImpl
+import ayds.NY1.NewYorkTimes.external.entity.ArtistInformationExternal
 
 interface ArtistInfoExternalStorage {
-    fun getArtistInfo(name: String): ArtistInformation?
+    fun getArtistInfo(name: String): ArtistInformationExternal?
 }
 
 class ArtistInfoExternalStorageImpl(private val nytArtistInfoService: NYTArtistInfoServiceImpl) :
     ArtistInfoExternalStorage {
 
-    override fun getArtistInfo(name: String): ArtistInformation? {
+    override fun getArtistInfo(name: String): ArtistInformationExternal? {
         return nytArtistInfoService.getArtistInfo(name)
     }
 }
