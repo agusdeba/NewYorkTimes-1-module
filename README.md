@@ -1,7 +1,7 @@
 # NewYorkTimes-module
 Para importar el submódulo, se debe ejecutar el siguiente comando en la línea de comandos (CMD) mientras se encuentra ubicado en la carpeta del proyecto en la ruta ".../libs".
 
-git submodule add https://https://github.com/agusdeba/NewYorkTimes-1-module NYTExternal
+git submodule add https://github.com/agusdeba/NewYorkTimes-1-module NYTExternal
 
 Utilización del submodulo
 Para obtener una instancia del servicio externo, es necesario realizar una llamada al inyector utilizando la función "init()", como se muestra en el siguiente ejemplo:
