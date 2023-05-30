@@ -9,7 +9,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 object DependenciesInjector {
     private const val NYTIMES_URL = "https://api.nytimes.com/svc/search/v2/"
 
-    fun init(): NYTArtistInfoServiceImpl {
+    fun init(): NYTArtistInfoService {
         val nyToArtisInfoResolver = JsonToArtistInfoResolver()
         val newYorkTimesRetrofit = Retrofit.Builder()
             .baseUrl(NYTIMES_URL)
