@@ -6,6 +6,7 @@ sealed class ArtistInformationExternal {
         val artistName: String,
         var abstract: String?,
         val url: String?,
+        val logoUrl: String = LOGO_URL,
         var isLocallyStored: Boolean = false
     ) : ArtistInformationExternal()
 
