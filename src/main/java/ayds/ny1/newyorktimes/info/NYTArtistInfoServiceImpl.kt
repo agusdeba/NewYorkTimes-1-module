@@ -15,6 +15,6 @@ class NYTArtistInfoServiceImpl(
     }
 
     private fun getArtistInfoFromService(artistName: String): Response<String> {
-        return newYorkTimesAPI.getArtistInfo(artistName)
+        return newYorkTimesAPI.getArtistInfo(artistName).execute()
     }
 }
