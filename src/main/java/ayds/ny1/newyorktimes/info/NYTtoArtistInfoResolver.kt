@@ -1,4 +1,4 @@
-package ayds.ny1.newyorktimes.entity.info
+package ayds.ny1.newyorktimes.info
 
 import ayds.ny1.newyorktimes.entity.ArtistInformationExternal
 import com.google.gson.Gson

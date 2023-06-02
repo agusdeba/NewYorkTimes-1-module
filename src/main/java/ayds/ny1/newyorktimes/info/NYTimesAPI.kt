@@ -1,4 +1,4 @@
-package ayds.ny1.newyorktimes.entity.info
+package ayds.ny1.newyorktimes.info
 
 import retrofit2.Response
 import retrofit2.http.GET
