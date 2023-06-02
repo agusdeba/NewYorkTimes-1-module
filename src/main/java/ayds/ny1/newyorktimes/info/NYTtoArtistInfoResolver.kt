@@ -2,36 +2,52 @@ package ayds.ny1.newyorktimes.info
 
 import ayds.ny1.newyorktimes.entity.ArtistInformationExternal
 import com.google.gson.Gson
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import retrofit2.Response
+
+private const val PROP_RESPONSE = "response"
+private const val WEB_URL = "web_url"
+private const val DOC = "docs"
 
 interface NYTtoArtistInfoResolver {
-    fun getArtistInfoFromExternalData(name: String, serviceData: String?): ArtistInformationExternal?
+    fun getURL(response: Response<String>): String
+    fun getArtistInfoFromExternalData(artistName: String, response: Response<String>): ArtistInformationExternal
 }
 
-internal class JsonToArtistInfoResolver : NYTtoArtistInfoResolver {
+internal class JsonToArtistInfoResolver : NYTtoArtistInfoResolver{
+    private fun getJson(callResponse: Response<String>): JsonObject {
+        val gson = Gson()
+        return gson.fromJson(callResponse.body(), JsonObject::class.java)
+    }
 
-    override fun getArtistInfoFromExternalData(
-        name: String,
-        serviceData: String?
-    ): ArtistInformationExternal? {
-        return serviceData.getFirstItem()?.let { item ->
+    private fun getAsJsonObject(response: JsonObject): JsonElement? {
+        return response["docs"].asJsonArray[0].asJsonObject["abstract"]
+    }
+
+    private fun artistInfoAbstractToString(abstract: JsonElement): String {
+        return abstract.asString.replace("\n", "\n")
+    }
+
+    override fun getURL(response: Response<String>): String {
+        val jsonResponse = generateResponse(response)
+        return jsonResponse[DOC].asJsonArray[0].asJsonObject[WEB_URL].asString
+    }
+
+    private fun generateResponse(response: Response<String>): JsonObject {
+        val jObj = getJson(response)
+        return jObj[PROP_RESPONSE].asJsonObject
+    }
+    override fun getArtistInfoFromExternalData(artistName: String, response: Response<String>): ArtistInformationExternal {
+        val jsonResponse = generateResponse(response)
+        val abstract = getAsJsonObject(jsonResponse)
+        return if(abstract != null) {
             ArtistInformationExternal.ArtistInformationDataExternal(
-                name,
-                item.getAbstract(),
-                item.getURL()
+                artistName,
+                artistInfoAbstractToString(abstract),
+                this.getURL(response)
             )
-        } ?: ArtistInformationExternal.ArtistInformationEmptyExternal
+        } else ArtistInformationExternal.ArtistInformationEmptyExternal
     }
-
-    private fun String?.getFirstItem(): JsonObject? {
-        val jobj = Gson().fromJson(this, JsonObject::class.java)
-        val docs = jobj[DOCS].asJsonArray
-        val items = docs[0].asJsonArray
-        return items[0].asJsonObject
-    }
-
-    private fun JsonObject.getAbstract() = this[ABSTRACT].asString
-    private fun JsonObject.getURL() = this[URL].asString
-
 
 }

@@ -11,7 +11,7 @@ class NYTArtistInfoServiceImpl(
 
     override fun getArtistInfo(name: String): ArtistInformationExternal? {
         val callResponse = getArtistInfoFromService(name)
-        return NYTtoArtistInfo.getArtistInfoFromExternalData(name, callResponse.body())
+        return NYTtoArtistInfo.getArtistInfoFromExternalData(name, callResponse)
     }
 
     private fun getArtistInfoFromService(artistName: String): Response<String> {
