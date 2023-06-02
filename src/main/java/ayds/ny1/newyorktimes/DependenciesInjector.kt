@@ -1,8 +1,8 @@
-package ayds.NY1.NewYorkTimes.external
+package ayds.ny1.newyorktimes
 
-import ayds.NY1.NewYorkTimes.external.info.JsonToArtistInfoResolver
-import ayds.NY1.NewYorkTimes.external.info.NYTArtistInfoServiceImpl
-import ayds.NY1.NewYorkTimes.external.info.NYTimesAPI
+import ayds.ny1.newyorktimes.info.JsonToArtistInfoResolver
+import ayds.ny1.newyorktimes.info.NYTArtistInfoServiceImpl
+import ayds.ny1.newyorktimes.info.NYTimesAPI
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 

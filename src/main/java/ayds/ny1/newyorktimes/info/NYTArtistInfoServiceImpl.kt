@@ -1,7 +1,7 @@
-package ayds.NY1.NewYorkTimes.external.info
+package ayds.ny1.newyorktimes.entity.info
 
-import ayds.NY1.NewYorkTimes.external.NYTArtistInfoService
-import ayds.NY1.NewYorkTimes.external.entity.ArtistInformationExternal
+import ayds.ny1.newyorktimes.NYTArtistInfoService
+import ayds.ny1.newyorktimes.entity.ArtistInformationExternal
 import retrofit2.Response
 
 class NYTArtistInfoServiceImpl(

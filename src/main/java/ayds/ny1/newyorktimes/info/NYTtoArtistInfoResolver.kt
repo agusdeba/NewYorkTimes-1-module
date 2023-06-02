@@ -1,6 +1,6 @@
-package ayds.NY1.NewYorkTimes.external.info
+package ayds.ny1.newyorktimes.entity.info
 
-import ayds.NY1.NewYorkTimes.external.entity.ArtistInformationExternal
+import ayds.ny1.newyorktimes.entity.ArtistInformationExternal
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 

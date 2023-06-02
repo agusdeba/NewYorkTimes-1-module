@@ -1,4 +1,4 @@
-package ayds.NY1.NewYorkTimes.external.info
+package ayds.ny1.newyorktimes.entity.info
 
 const val DOCS = "docs"
 const val ABSTRACT = "abstract"
